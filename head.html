@@ -1,0 +1,35 @@
+<script>
+let app = {
+    animationSource: 'https://raw.githubusercontent.com/musa11971/musa.omg.lol/main/assets/animation.gif',
+    pfSource: 'https://raw.githubusercontent.com/musa11971/musa.omg.lol/main/assets/pf-dark.png',
+
+    pf: null,
+    oldPf: null,
+
+    init() {
+        pf = document.getElementById('profile-picture');
+        document.getElementById('name').addEventListener('mouseover', app.hoverStart.bind(this));
+        document.getElementById('name').addEventListener('mouseout', app.hoverStop.bind(this));
+    },
+
+    hoverStart() {
+        document.body.style.backgroundImage = 'url(' + app.animationSource + ')';
+        
+        app.oldPf = pf.getAttribute('src');
+        pf.setAttribute('src', app.pfSource);
+    },
+
+    hoverStop() {
+        document.body.style.backgroundImage = null;
+        pf.setAttribute('src', app.oldPf);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function(event) {
+    app.init();
+});
+</script>
+
+<!-- Preload custom content  -->
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/musa11971/musa.omg.lol/main/assets/animation.gif">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/musa11971/musa.omg.lol/main/assets/pf-dark.png">
